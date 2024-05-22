@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "This is Build stage"
+                echo env.BUILD_NUMBER
+            }
+        }
+        stage('Test') {
+            steps {
+             echo "This is Test stage"  
+             echo "The Workspace is: ${env.WORKSPACE}"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "This is Deploy stage"
+                echo "The current Result is: ${currentBuild.currentResult}"
+            }
+        }
+    }
+}
